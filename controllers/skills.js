@@ -1,31 +1,43 @@
-const skill= require('../models/skill')
+const Skill= require('../models/skill')
 
 
 module.exports = {
 index,
 show,
-deleteSkill
+deleteSkill,
+addSkill,
+newSkill
 }
 
+function newSkill (req , res) {
+  res.render('skills/addSkill')
+}
 
 function index(req, res) {
     res.render('skills/index', {
-      skills: skill.getAll(),
+      skills: Skill.getAll(),
       time: req.time
     });
   }
 
+  function addSkill(req , res){
+    Skill.addSkill(req.body)
+    res.redirect('/skills')
+    // res.render('skills/addSkill',{
+    //   title: "Add Skill ",
+    }
+
 
   function show(req, res) {
     res.render('skills/show', {
-      Skill: skill.getOne(req.params.id),
+      skill: Skill.getOne(req.params.id),
       title: 'the title'
     })
   }
 
   function deleteSkill(req,res){
     console.log(req.params.id)
-    skill.deleteOne(req.params.id)
+    Skill.deleteOne(req.params.id)
     
     res.redirect('/skills')
   }

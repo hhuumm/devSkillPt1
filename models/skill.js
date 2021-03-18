@@ -10,15 +10,21 @@ const skills=
 module.exports={
 getAll,
 getOne,
-createSkill,
+addSkill,
 deleteOne
 
 }
 
 
 function getAll(){return skills;}
+
 function getOne(id){return skills.find(skill=>skill.id==parseInt(id))}
-function createSkill(skill){skills.push(skill)}
+
+function addSkill(skill){
+    console.log(`this is my skill :: ${skill.title}`)
+    skill.id=Date.now()%1000000
+    skills.push(skill)
+}
 
 function deleteOne(id){
     let idx = skills.findIndex(skill => skill.id === parseInt(id))
