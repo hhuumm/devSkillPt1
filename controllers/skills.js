@@ -6,9 +6,22 @@ index,
 show,
 deleteSkill,
 addSkill,
-newSkill
+newSkill,
+edit,
+update
 }
+function update(req,res){
 
+  req.body.done = !!req.body.done
+  Skill.update(req.params.id, req.body)
+  res.redirect('/skills')
+}
+function edit (req, res)
+{
+res.render('skills/edit',{
+  skill:Skill.getOne(req.params.id)
+})
+} 
 function newSkill (req , res) {
   res.render('skills/addSkill')
 }

@@ -10,7 +10,7 @@
     <h1>Skill ID #<%=skill.id %></h1><br>
     <h3>Skill:<%=skill.title %></h3><br>
     <h3>Competant: <%=skill.efficiency>5 ? 'Yes' : 'No' %></h3><br>
-    
+    <a href="/skills/<%= skill.id %>/edit">Edit skill</a><br>
     <a href="/skills">Back to Index</a>
 </body>
 </html>

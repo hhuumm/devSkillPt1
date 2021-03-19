@@ -11,10 +11,17 @@ module.exports={
 getAll,
 getOne,
 addSkill,
-deleteOne
+deleteOne,
+update
 
 }
 
+function update(id,newSkill){
+
+    let idx = skills.findIndex(skill => skill.id === parseInt(id))
+    skills[idx].title = newSkill.title
+    skills[idx].efficiency = parseInt(newSkill.efficiency)
+}
 
 function getAll(){return skills;}
 
